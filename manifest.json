@@ -6,6 +6,7 @@
   "dir": "ltr",
   "lang": "en-US",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "orientation": "any",
   "background_color": "#1a273d",
