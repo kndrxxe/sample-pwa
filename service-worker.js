@@ -36,14 +36,14 @@ self.addEventListener("activate", async (e) => {
 });
 
 // Fetch Event
-self.addEventListener('fetch', (event) => {
+self.addEventListener("fetch", (event) => {
   const request = event.request;
 
-  // Only handle requests from the same origin
+  // Only same-origin
   if (request.url.startsWith(self.location.origin)) {
 
-    // Network-first for HTML pages
-    if (request.headers.get('accept')?.includes('text/html')) {
+    // Network-first for HTML
+    if (request.headers.get("accept")?.includes("text/html")) {
       event.respondWith(
         fetch(request)
           .then((response) => {
@@ -51,7 +51,9 @@ self.addEventListener('fetch', (event) => {
             caches.open(cacheName).then((cache) => cache.put(request, clone));
             return response;
           })
-          .catch(() => caches.match(request).then(r => r || caches.match('/fallback.html')))
+          .catch(() =>
+            caches.match(request).then((r) => r || caches.match("/fallback.html"))
+          )
       );
       return;
     }
