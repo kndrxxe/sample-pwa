@@ -1,10 +1,9 @@
-var cacheName = "MyPWA";
+var cacheName = 'PersonalWebpage';
 var filesToCache = [
-  "/",
-  "/index.html",
-  "/css/style.css",
-  "/js/main.js",
-  "/fallback.html",
+  '/',
+  '/index.html',
+  '/css/style.css',
+  '/js/main.js'
 ];
 
 // Install Event
@@ -33,30 +32,22 @@ self.addEventListener("activate", async (e) => {
 });
 
 // Fetch Event
-self.addEventListener('fetch', (event) => {
-  const request = event.request;
+self.addEventListener("fetch", (e) => {
+  const request = e.request;
 
-  // Only handle requests from the same origin
+  // Only handle same-origin requests
   if (request.url.startsWith(self.location.origin)) {
-
-    // Network-first for HTML pages
-    if (request.headers.get('accept')?.includes('text/html')) {
-      event.respondWith(
-        fetch(request)
-          .then((response) => {
-            const clone = response.clone();
-            caches.open(cacheName).then((cache) => cache.put(request, clone));
-            return response;
+    e.respondWith(
+      caches.match(request).then((cachedResponse) => {
+        return (
+          cachedResponse ||
+          fetch(request).catch(() => {
+            if (request.mode === "navigate") {
+              return caches.match("/fallback.html");
+            }
           })
-          .catch(() => caches.match(request).then(r => r || caches.match('/fallback.html')))
-      );
-      return;
-    }
-
-    // Cache-first for CSS, JS, Images
-    event.respondWith(
-      caches.match(request).then((cached) => cached || fetch(request))
+        );
+      })
     );
   }
 });
-
