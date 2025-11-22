@@ -1,4 +1,4 @@
-var cacheName = "PersonalWebpage";
+var cacheName = "MyPWA";
 var filesToCache = [
   "/",
   "/index.html",
