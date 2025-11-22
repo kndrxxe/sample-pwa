@@ -7,7 +7,7 @@ var filesToCache = [
   "/images/appicon-128x128.png",
   "/images/appicon-256x256.png",
   "/images/appicon-512x512.png",
-  "/fallback.html",
+  "/fallback.html"
 ];
 
 // Install Event
