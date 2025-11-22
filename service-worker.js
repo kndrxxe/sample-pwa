@@ -53,7 +53,7 @@ self.addEventListener('fetch', (event) => {
         fetch(request)
           .then((response) => {
             const clone = response.clone();
-            caches.open(CACHE_NAME).then((cache) => cache.put(request, clone));
+            caches.open(cacheName).then((cache) => cache.put(request, clone));
             return response;
           })
           .catch(() => caches.match(request).then(r => r || caches.match('/fallback.html')))
