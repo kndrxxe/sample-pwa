@@ -12,8 +12,7 @@ window.onload = () => {
         // This runs if registration succeeds
         // registration.scope shows which pages the service worker controls
         console.log(
-          "Service Worker registered successfully with scope:",
-          registration.scope
+          "Service Worker registered successfully with scope:", registration.scope
         );
       })
       .catch((error) => {
