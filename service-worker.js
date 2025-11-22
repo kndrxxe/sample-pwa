@@ -4,8 +4,7 @@ const filesToCache = [
   '/index.html',
   '/css/style.css',
   '/js/main.js',
-  '/images/appicon-1024x1024.png',
-  '/fallback.html' // Make sure to create this page
+  '/fallback.html'
 ];
 
 // Install Event - precache files
