@@ -1,6 +1,6 @@
 {
   "name": "My PWA App",
-  "short_name": "PWA",
+  "short_name": "My PWA App",
   "description": "My PWA App is a Progressive Web App",
   "categories": ["personal", "pwa", "application"],
   "dir": "ltr",
