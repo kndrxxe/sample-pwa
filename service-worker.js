@@ -7,7 +7,6 @@ var filesToCache = [
   "/images/appicon-128x128.png",
   "/images/appicon-256x256.png",
   "/images/appicon-512x512.png",
-  "/images/appicon-1024x1024.png",
   "/fallback.html",
 ];
 
